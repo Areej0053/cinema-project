@@ -1,23 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import About from './pages/About';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import Explore from "./pages/Explore";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import About from "./pages/About";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="app">
         <Header />
-        <main style={{ padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<h2 style={{ textAlign: 'center' }}>Explore Movies 🎬</h2>} />
-            <Route path="/login" element={<h2 style={{ textAlign: 'center' }}>Login Page (Placeholder)</h2>} />
-            <Route path="/register" element={<h2 style={{ textAlign: 'center' }}>Register Page (Placeholder)</h2>} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </main>
+
+        <Routes>
+          <Route path="/" element={<Explore />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
