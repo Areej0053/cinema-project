@@ -1,0 +1,177 @@
+
+/* =========================================
+   CINEVERSE - MOVIE DETAILS PAGE
+   ========================================= */
+
+.movie-details-page {
+  min-height: 100vh;
+  padding: 40px 6%;
+  background: #111116;
+  color: #ffffff;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #ff454f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+.movie-details-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-poster img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.details-content {
+  min-width: 0;
+}
+
+.details-label {
+  display: inline-block;
+  color: #ff454f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.details-content h1 {
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.details-meta span {
+  padding: 9px 15px;
+  background: #25252e;
+  border: 1px solid #393944;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.details-content h2 {
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.details-description {
+  color: #c5c5ce;
+  font-size: 17px;
+  line-height: 1.9;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.details-collection-info {
+  background: #1e1e26;
+  border-left: 4px solid #e50914;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.details-collection-info span {
+  color: #aaaaaa;
+  margin-right: 10px;
+}
+
+.details-collection-info strong {
+  color: #ffffff;
+}
+
+.details-collection-info p {
+  color: #bbbbbb;
+  margin-top: 10px;
+}
+
+.details-button {
+  display: inline-block;
+  background: #e50914;
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.details-button:hover {
+  background: #ff2633;
+}
+
+.related-movies {
+  max-width: 1200px;
+  margin: 80px auto 0;
+}
+
+.related-movies h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.related-movies > p {
+  color: #a8a8b3;
+  margin-bottom: 25px;
+}
+
+.movie-not-found {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.movie-not-found p {
+  margin: 20px 0;
+  color: #bbbbbb;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 768px) {
+  .movie-details-page {
+    padding: 25px 5%;
+  }
+
+  .movie-details-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .details-poster {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .details-content h1 {
+    font-size: 34px;
+  }
+
+  .details-description {
+    font-size: 15px;
+  }
+
+  .related-movies {
+    margin-top: 50px;
+  }
+}

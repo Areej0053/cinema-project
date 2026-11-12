@@ -223,3 +223,28 @@ a:focus-visible {
     font-size: 25px;
   }
 }
+
+/* CineVerse Authentication Logo */
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.auth-logo-icon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.auth-logo-text {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+.auth-logo-red {
+  color: #e50914;
+}

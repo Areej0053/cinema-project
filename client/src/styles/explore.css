@@ -7,3 +7,278 @@
 .movie-card img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; display: block; }
 .movie-info { padding: 0.75rem; }
 .empty-state { text-align: center; padding: 2rem; }
+
+/* =========================================
+   CINEVERSE - MOVIE COLLECTIONS
+   ========================================= */
+
+.collections-section {
+  margin: 45px 0 60px;
+}
+
+.collections-section > h2,
+.standalone-section > h2 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #a8a8b3;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+/* Collection layout */
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+/* Collection card */
+
+.movie-collection {
+  min-width: 0;
+  background: linear-gradient(
+    145deg,
+    #23232b,
+    #15151b
+  );
+  border: 1px solid #35353f;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.movie-collection:hover {
+  transform: translateY(-4px);
+  border-color: #e50914;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Poster and information */
+
+.collection-header {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px;
+}
+
+.collection-poster {
+  width: 145px;
+  height: 215px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.collection-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.collection-label {
+  color: #ff454f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.collection-info h2 {
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.collection-info > p {
+  color: #c5c5ce;
+  font-size: 13px;
+  margin: 0;
+}
+
+.collection-description {
+  line-height: 1.6;
+}
+
+/* View All Parts button */
+
+.collection-button {
+  background: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease,
+              transform 0.2s ease;
+}
+
+.collection-button:hover {
+  background: #ff2633;
+  transform: translateY(-2px);
+}
+
+.collection-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Expanded movies */
+
+.collection-movies {
+  padding: 20px;
+  border-top: 1px solid #35353f;
+  background: #111116;
+}
+
+.collection-movies.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 170px), 1fr)
+  );
+  gap: 18px;
+}
+
+.collection-movies .movie-card {
+  min-width: 0;
+}
+
+.collection-movies .movie-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* Standalone movies */
+
+.standalone-section {
+  margin-top: 45px;
+}
+
+.standalone-section > h2 {
+  margin-bottom: 24px;
+}
+
+/* Tablet screens */
+
+@media (max-width: 1100px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile screens */
+
+@media (max-width: 600px) {
+  .collections-section {
+    margin-top: 30px;
+  }
+
+  .collections-section > h2,
+  .standalone-section > h2 {
+    font-size: 23px;
+  }
+
+  .collection-header {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .collection-poster {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .collection-info {
+    width: 100%;
+  }
+
+  .collection-info h2 {
+    font-size: 21px;
+  }
+
+  .collection-button {
+    width: 100%;
+  }
+
+  .collection-movies {
+    padding: 14px;
+  }
+
+  .collection-movies.movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .collection-movies .movie-card img {
+    height: 190px;
+  }
+}
+
+@media (max-width: 380px) {
+  .collection-movies.movie-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-collection,
+  .collection-button {
+    transition: none;
+  }
+}
+
+/* Clickable movie cards */
+
+.movie-card-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 14px;
+}
+
+.movie-card-link .movie-card {
+  height: 100%;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.movie-card-link:hover .movie-card {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.2);
+}
+
+.movie-card-link:focus-visible {
+  outline: 3px solid #e50914;
+  outline-offset: 4px;
+}
+
+.movie-view-details {
+  display: inline-block;
+  margin-top: 12px;
+  color: #ff454f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.movie-card-link:hover .movie-view-details {
+  color: #ffffff;
+}

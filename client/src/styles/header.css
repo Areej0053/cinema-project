@@ -1,0 +1,106 @@
+
+/* CINEVERSE HEADER */
+
+.cineverse-header {
+  width: 100%;
+  background: #141419;
+  border-bottom: 1px solid #303039;
+  position: relative;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cineverse-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  white-space: nowrap;
+}
+
+.cineverse-logo .logo-red {
+  color: #e50914;
+}
+
+.logo-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.header-navigation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-nav-link {
+  color: #d0d0d8;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 9px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-nav-link:hover {
+  color: #ffffff;
+  background: #292932;
+}
+
+.header-nav-link.active {
+  color: #ffffff;
+  background: #e50914;
+}
+
+.cineverse-logo:focus-visible,
+.header-nav-link:focus-visible {
+  outline: 3px solid #ff454f;
+  outline-offset: 3px;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 700px) {
+  .header-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 4%;
+  }
+
+  .header-navigation {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .header-nav-link {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  .cineverse-logo {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-nav-link {
+    padding: 8px;
+    font-size: 13px;
+  }
+}

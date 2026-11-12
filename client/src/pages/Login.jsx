@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ export default function Login() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(email.trim())) {
       setError("Please enter a valid email address.");
       return;
     }
@@ -42,11 +43,21 @@ export default function Login() {
     <main className="auth-page">
       <section className="auth-card">
 
+        {/* CineVerse Logo */}
         <div className="auth-logo">
-          <span>🎬</span>
-          <span>CineVerse</span>
+          <span
+            className="auth-logo-icon"
+            aria-hidden="true"
+          >
+            🎬
+          </span>
+
+          <span className="auth-logo-text">
+            Cine<span className="auth-logo-red">Verse</span>
+          </span>
         </div>
 
+        {/* Welcome Heading */}
         <div className="auth-heading">
           <h1>Welcome Back!</h1>
           <p>
@@ -54,6 +65,7 @@ export default function Login() {
           </p>
         </div>
 
+        {/* Login Form */}
         <form onSubmit={handleLogin} noValidate>
 
           <div className="form-group">
@@ -111,18 +123,21 @@ export default function Login() {
             </div>
           </div>
 
+          {/* Error Message */}
           {error && (
             <p className="auth-error" role="alert">
               {error}
             </p>
           )}
 
+          {/* Success Message */}
           {message && (
             <p className="auth-success" role="status">
               {message}
             </p>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
             className="auth-button"
@@ -132,12 +147,13 @@ export default function Login() {
 
         </form>
 
+        {/* Register Link */}
         <div className="auth-footer">
           <p>
             New to CineVerse?{" "}
-            <a href="/register">
+            <Link to="/register">
               Create an Account
-            </a>
+            </Link>
           </p>
         </div>
 

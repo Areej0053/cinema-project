@@ -1,27 +1,46 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Header() {
+import { NavLink } from "react-router-dom";
+import "../styles/header.css";
+
+export default function Header() {
+  const navItems = [
+    { label: "Explore", path: "/" },
+    { label: "Login", path: "/login" },
+    { label: "Register", path: "/register" },
+    { label: "About", path: "/about" }
+  ];
+
   return (
-    <header style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '15px 30px',
-      backgroundColor: '#1a1a1a',
-      color: '#fff'
-    }}>
-      <Link to="/" style={{ textDecoration: 'none', color: '#e50914' }}>
-        <h2 style={{ margin: 0 }}>CineVerse 🎬</h2>
-      </Link>
-      <nav style={{ display: 'flex', gap: '20px' }}>
-        <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>Explore</Link>
-        <Link to="/login" style={{ color: '#fff', textDecoration: 'none' }}>Login</Link>
-        <Link to="/register" style={{ color: '#fff', textDecoration: 'none' }}>Register</Link>
-        <Link to="/about" style={{ color: '#fff', textDecoration: 'none' }}>About</Link>
-      </nav>
+    <header className="cineverse-header">
+      <div className="header-container">
+        <NavLink
+          to="/"
+          className="cineverse-logo"
+          aria-label="CineVerse Home"
+        >
+          <span className="logo-icon" aria-hidden="true">
+            🎬
+          </span>
+          <span>
+            Cine<span className="logo-red">Verse</span>
+          </span>
+        </NavLink>
+
+        <nav className="header-navigation" aria-label="Main navigation">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
+                `header-nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 }
-
-export default Header;
