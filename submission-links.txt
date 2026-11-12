@@ -1,0 +1,68 @@
+
+CINEVERSE — MILESTONE 1 SUBMISSION
+=================================
+
+Project Name: CineVerse
+Project Type: Movie Discovery Web Application
+
+TEAM MEMBERS
+------------
+1. Areej
+2. Waed
+3. Sara
+
+Student IDs:
+Areej: [2334600]
+Waed: [2440239]
+Sara: [2432905]
+
+GITHUB REPOSITORY
+-----------------
+https://github.com/Areej0053/cinema-project
+
+LIVE WEBSITE (RENDER)
+---------------------
+https://cinema-project-axjy.onrender.com/
+
+GIT COMMIT
+----------
+Latest verified development commit:
+b89b785
+
+IMPORTANT PROJECT ROUTES
+------------------------
+Explore:
+https://cinema-project-axjy.onrender.com/
+
+Login:
+https://cinema-project-axjy.onrender.com/login
+
+Register:
+https://cinema-project-axjy.onrender.com/register
+
+About:
+https://cinema-project-axjy.onrender.com/about
+
+Movie Details Example:
+https://cinema-project-axjy.onrender.com/movie/1
+
+TECHNOLOGIES
+------------
+React
+Vite
+JavaScript
+CSS
+React Router
+GitHub
+Render
+
+DOCUMENTATION
+-------------
+README.md
+AI-USE.md
+
+NOTES
+-----
+Milestone 1 implements frontend functionality.
+Login and registration use frontend validation only.
+Movie data is stored locally in JavaScript.
