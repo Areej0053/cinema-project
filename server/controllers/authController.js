@@ -153,4 +153,21 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// Logout the current user
+const logout = (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      return res.status(500).json({
+        message: "Logout failed"
+      });
+    }
+
+    res.clearCookie("connect.sid");
+
+    res.status(200).json({
+      message: "Logout successful"
+    });
+  });
+};
+
+module.exports = { register, login, logout };
