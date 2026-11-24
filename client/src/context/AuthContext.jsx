@@ -35,13 +35,80 @@ export function AuthProvider({ children }) {
     }
   };
 
+  // register new user
+  const register = async (name, email, password) => {
+    const response = await fetch(`${API_URL}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
+
+    return data;
+  };
+
+  // login user
+  const login = async (email, password) => {
+    const response = await fetch(`${API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Login failed");
+    }
+
+    setUser(data.user);
+    setAuthError(null);
+
+    return data;
+  };
+
+  // logout user
+  const logout = async () => {
+    const response = await fetch(`${API_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include"
+    });
+
+    if (!response.ok) {
+      throw new Error("Logout failed");
+    }
+
+    setUser(null);
+    setAuthError(null);
+  };
+
   useEffect(() => {
     checkAuth();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, loading, checkAuth, authError }}
+      value={{
+        user,
+        setUser,
+        loading,
+        authError,
+        checkAuth,
+        register,
+        login,
+        logout
+      }}
     >
       {children}
     </AuthContext.Provider>
