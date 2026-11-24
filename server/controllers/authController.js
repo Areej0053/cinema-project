@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-
+const { cookieOptions } = require("../config/session");
 
 const register = async (req, res) => {
   try {
@@ -155,6 +155,7 @@ const login = async (req, res) => {
 
 
 const logout = (req, res) => {
+  // destroy user session
   req.session.destroy((error) => {
     if (error) {
       return res.status(500).json({
@@ -162,14 +163,14 @@ const logout = (req, res) => {
       });
     }
 
-    res.clearCookie("connect.sid");
+    // remove session cookie
+    res.clearCookie("cineverse.sid", cookieOptions);
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Logout successful"
     });
   });
 };
-
 // Get the currently logged-in user
 const getCurrentUser = async (req, res) => {
   try {
