@@ -1,7 +1,22 @@
+const mongoose = require("mongoose");
 const Movie = require("../models/Movie");
 
 const requireOwner = async (req, res, next) => {
   try {
+    // check if user is logged in
+    if (!req.session || !req.session.userId) {
+      return res.status(401).json({
+        message: "Please login first"
+      });
+    }
+
+    // validate movie id
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        message: "Invalid movie ID"
+      });
+    }
+
     // find the movie
     const movie = await Movie.findById(req.params.id);
 
@@ -12,7 +27,10 @@ const requireOwner = async (req, res, next) => {
     }
 
     // check movie ownership
-    if (movie.owner.toString() !== req.session.userId) {
+    if (
+      !movie.owner ||
+      movie.owner.toString() !== req.session.userId
+    ) {
       return res.status(403).json({
         message: "You are not allowed to modify this movie"
       });
@@ -22,12 +40,6 @@ const requireOwner = async (req, res, next) => {
     next();
 
   } catch (error) {
-    if (error.name === "CastError") {
-      return res.status(400).json({
-        message: "Invalid movie ID"
-      });
-    }
-
     return res.status(500).json({
       message: "Something went wrong"
     });
