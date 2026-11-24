@@ -104,3 +104,32 @@
     font-size: 13px;
   }
 }
+/* logged in user */
+.header-user-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* logout button */
+.logout-button {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.logout-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* logout error */
+.header-auth-error {
+  color: #ff6b6b;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px;
+}

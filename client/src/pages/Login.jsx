@@ -1,19 +1,21 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleLogin(event) {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  // handle login
+  async function handleLogin(event) {
     event.preventDefault();
-
     setError("");
-    setMessage("");
 
     if (!email.trim() || !password) {
       setError("Please fill in all fields.");
@@ -27,23 +29,23 @@ export default function Login() {
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must contain at least 6 characters.");
-      return;
-    }
+    setLoading(true);
 
-    // Milestone 1: Frontend validation only.
-    // Real authentication will be added in Milestone 2.
-    setMessage(
-      "Your details are valid. Sign-in functionality is coming soon."
-    );
+    try {
+      await login(email.trim(), password);
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <main className="auth-page">
+    <div className="auth-page">
       <section className="auth-card">
 
-        {/* CineVerse Logo */}
+        {/* cineverse logo */}
         <div className="auth-logo">
           <span
             className="auth-logo-icon"
@@ -57,7 +59,7 @@ export default function Login() {
           </span>
         </div>
 
-        {/* Welcome Heading */}
+        {/* welcome heading */}
         <div className="auth-heading">
           <h1>Welcome Back!</h1>
           <p>
@@ -65,7 +67,7 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Login Form */}
+        {/* login form */}
         <form onSubmit={handleLogin} noValidate>
 
           <div className="form-group">
@@ -82,8 +84,8 @@ export default function Login() {
               onChange={(event) => {
                 setEmail(event.target.value);
                 setError("");
-                setMessage("");
               }}
+              required
             />
           </div>
 
@@ -102,8 +104,8 @@ export default function Login() {
                 onChange={(event) => {
                   setPassword(event.target.value);
                   setError("");
-                  setMessage("");
                 }}
+                required
               />
 
               <button
@@ -123,31 +125,25 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Error Message */}
+          {/* error message */}
           {error && (
             <p className="auth-error" role="alert">
               {error}
             </p>
           )}
 
-          {/* Success Message */}
-          {message && (
-            <p className="auth-success" role="status">
-              {message}
-            </p>
-          )}
-
-          {/* Submit Button */}
+          {/* submit button */}
           <button
             type="submit"
             className="auth-button"
+            disabled={loading}
           >
-            Sign In
+            {loading ? "Signing In..." : "Sign In"}
           </button>
 
         </form>
 
-        {/* Register Link */}
+        {/* register link */}
         <div className="auth-footer">
           <p>
             New to CineVerse?{" "}
@@ -158,6 +154,6 @@ export default function Login() {
         </div>
 
       </section>
-    </main>
+    </div>
   );
 }

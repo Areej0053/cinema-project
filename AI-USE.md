@@ -136,3 +136,51 @@ The team is responsible for the final submitted project and its functionality.
 **Milestone:** 1
 
 **Team:** Areej, Waed, Sara
+
+
+
+# AI Usage Documentation – CineVerse
+
+## Milestone 2 – Authentication and Authorization
+
+**Team Member:** Areej  
+**AI Tool:** OpenAI ChatGPT
+
+### Purpose of AI Usage
+
+ChatGPT was used as a learning and development assistant during the implementation of authentication and authorization features for the CineVerse project.
+
+### Areas of AI Assistance
+
+- Creating the Mongoose User model.
+- Implementing user registration and password hashing using bcrypt.
+- Implementing login, logout, and current user functionality.
+- Configuring session-based authentication.
+- Configuring MongoDB session storage and CORS.
+- Developing authentication and movie ownership middleware.
+- Preparing CSRF protection.
+- Implementing the React authentication context.
+- Connecting the login and registration pages to the authentication API.
+- Updating navigation based on authentication status.
+- Creating a protected route component.
+- Configuring environment variables.
+- Troubleshooting Git and PowerShell commands.
+- Preparing authentication and security testing scenarios.
+
+### Nature of AI Assistance
+
+ChatGPT provided code examples, implementation guidance, technical explanations, troubleshooting suggestions, and security recommendations.
+
+AI-generated code was used and adapted within the project, including integration with the existing CineVerse frontend structure.
+
+### Verification and Testing
+
+Frontend production builds were executed successfully during development.
+
+Full backend authentication, session persistence, authorization, and security testing remain pending until the backend and database integration are available.
+
+### Responsibility
+
+The team member is responsible for reviewing, understanding, testing, and maintaining the submitted implementation.
+
+This documentation will be updated if additional AI assistance is used during system integration, deployment, or final testing.
