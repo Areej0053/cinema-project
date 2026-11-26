@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import movies from "../data/movies";
+import { useState, useEffect } from "react";
+import { getMovies } from "../services/movieApi";
 import collections from "../data/collections";
 import MovieFilters from "../components/MovieFilters";
 import MovieGrid from "../components/MovieGrid";
@@ -11,7 +11,16 @@ export default function Explore() {
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState("All");
   const [sort, setSort] = useState("rating");
+const [movies, setMovies] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
 
+useEffect(() => {
+  getMovies()
+    .then(setMovies)
+    .catch((err) => setError(err.message))
+    .finally(() => setLoading(false));
+}, []);
   const genres = ["All", ...new Set(movies.map((m) => m.genre))];
 
   const searchText = search.trim().toLowerCase();
@@ -24,7 +33,6 @@ export default function Explore() {
 
     const matchesGenre =
       genre === "All" || movie.genre === genre;
-
     return matchesSearch && matchesGenre;
   });
 
@@ -46,7 +54,7 @@ export default function Explore() {
   const visibleCollections = collections
     .map((collection) => {
       const collectionMovies = movies.filter((movie) =>
-        collection.movieIds.includes(movie.id)
+        collection.movieIds.includes(movie._id)
       );
 
       const matchesCollectionName = collection.title
@@ -74,7 +82,7 @@ export default function Explore() {
   // Movies without a franchise remain standalone cards.
   const standaloneMovies = sortMovies(
     filteredMovies.filter(
-      (movie) => !collectionMovieIds.has(movie.id)
+      (movie) => !collectionMovieIds.has(movie._id)
     )
   );
 
@@ -103,6 +111,8 @@ export default function Explore() {
     setGenre("All");
     setSort("rating");
   };
+       if (loading) return <p>Loading movies...</p>;
+      if (error) return <p>Could not load movies: {error}</p>;
 
   return (
     <main className="explore">

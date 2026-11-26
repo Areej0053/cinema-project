@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function MovieCard({ movie }) {
   return (
     <Link
-      to={`/movie/${movie.id}`}
+      to={`/movie/${movie._id}`}
       className="movie-card-link"
       aria-label={`View details for ${movie.title}`}
     >
