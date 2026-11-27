@@ -50,7 +50,7 @@ export default function MovieCollection({ collection, movies }) {
       {expanded && (
         <div className="collection-movies movie-grid">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard key={movie._id} movie={movie} />
           ))}
         </div>
       )}

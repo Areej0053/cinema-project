@@ -28,13 +28,13 @@ export default function MovieDetails() {
 
   // Find the collection containing this movie.
   const collection = collections.find((item) =>
-    item.movieIds.includes(movie.id)
+    item.movieIds.includes(movie._id)
   );
 
   // Find other movies from the same collection.
   const relatedMovies = collection
     ? collection.movieIds
-        .filter((movieId) => movieId !== movie.id)
+        .filter((movieId) => movieId !== movie._id)
         .map((movieId) =>
           movies.find((item) => item.id === movieId)
         )
